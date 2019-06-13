@@ -82,8 +82,11 @@
 // Express Hello world! 예제 
 
 const express = require('express');
+const logger = require('morgan');
 const app = express();
+const users = [{name: 'Alice'}] // todo
 
 app.get('/', (req,res) => res.send('Hello World!'));
+app.get('/users', (req,res) => res.json(users));
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
