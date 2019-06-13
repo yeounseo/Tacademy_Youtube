@@ -61,9 +61,53 @@ console.log(file)   // "테스트 파일입니다."
 
 readFile()  //비동기적으로 처리!
 
+-* Express.js 역할 및 구조의 이해 *-
+
 const fs = require('fs')
 
 const file = fs.readFile('test.txt', {
     encoding: 'utf8'
 }), (err,data) => console.log(file))    //'테스트 파일입니다'
 
+// url 의 뒤에 users로 요청했을때의 응답
+else if(req.url === '/users') {
+        const users = [
+            {name : 'Alice'},
+            {name : 'Beck'}
+        ];
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        // JSON을 불러왹 위해서는 setHeader도 변경해야 한다.
+        res.end(JSON.stringify(users));
+    }
+
+개발을 계속해나가다 보면 중복이 일어날 수 있고, 그런것들을 리펙토링한다.
+
+Express.JS
+
+-Application
+    -익스프레스 인스턴스를 어플리케이션이라 한다.
+    -서버에 필요한 기능인 미들웨어를 어플리케이션에 추가한다.
+    -라우팅 설정을 할 수 있다. 
+    -서버를 요청 대기 상태로 만들 수 있다. (app.listen)
+
+-미들웨어 : 서버의 뼈대 사이사이에 필요한 기능들을 채운다.
+    -미들웨어는 함수들의 연속이다
+    -로깅 미들웨어를 만들어보자
+    -써드파티 미들웨어를 사용해 보자
+    -일반 미들웨어 vs 에러 미들웨어
+
+-라우팅 : 요청에 따라 다른 로직을 수행해준다.
+    - 요청 url에 대해 적절한 핸들러 함수로 연결해 주는 기능을 라우팅이라고 부른다.
+    - 어플리케이션의 get(), post() 메소드로 구현할 수 있다.
+    - 라우팅을 위한 전용 Router 클래스를 사용할 수도 있다.
+
+-요청 객체 : req
+    -클라이언트 요청 정보를 담은 객체를 요청(Request)객체라고 한다.
+    - http 모듈의 request 객체를 래핑한 것이다.
+    - req.params() , req.query(), req.body() 메소드를 주로 사용한다.
+
+-응답 객체 : res
+    -클라이언트 응답 정보를 담은 객체를 응답(Response)객체 라고 한다.
+    -http모듈의 response 객체를 래핑한 것이다.
+    -res.send(), res.status(), res.json() 메소드를 주로 사용한다.
