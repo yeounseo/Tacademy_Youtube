@@ -111,3 +111,52 @@ Express.JS
     -클라이언트 응답 정보를 담은 객체를 응답(Response)객체 라고 한다.
     -http모듈의 response 객체를 래핑한 것이다.
     -res.send(), res.status(), res.json() 메소드를 주로 사용한다.
+
+
+    REST API 이해와 설계
+
+-HTTP 요청
+    -모든 자원은 명사로 식별한다. (서버에 있는 모든 자원은 리소스라고 한다.)
+    -HTTP 경로로 자원을 요청한다.
+    -ex) 
+        - GET /users
+        - GET /users/{id}
+-HTTP 메서드
+    -서버자원에 대한 행동을 나타낸다 (동사로 표현)
+    -GET : 자원을 조회
+    -POST : 자원을 생성
+    -PUT : 자원을 갱신
+    -DELETE : 자원을 삭제
+-이는 익스프레스 어플리케이션의 메소드로 구현되어 있다.
+
+-HTTP 상태코드
+    -1xx : 아직 처리중
+    -2xx : 자, 여기있어! 
+        -200 : 성공(success), GET , PUT
+        -201 : 작성됨(created), POST
+        -204 : 내용 없음 (No Content), DELETE
+    -3xx : 잘 가~
+    -4xx : 니가 문제임
+        -400 : 잘못된 요청 (Bad Request)
+        -401 : 권한 없음 (Unauthorized)
+        -404 : 찾을 수 없음 (Not found)
+        -409 : 충돌 (Conflict)
+    -5xx : 내가 문제임
+        -500 : 서버 에러 (Interel server error)
+        -500번대는 보안 상의 문제도 있기 떄문에 상세하게 알려주지 않는다.
+
+
+-첫 API 만들기
+
+-GET /users
+-사용자 목록을 조회하는 기능
+-git checkout -f install -express
+
+package.json 파일의 scripts 부분에 "start": "node /index.js" 를 추가하면 npm start 명령어로 시작 가능 
+
+
+
+-테스트 주도 개발
+
+-TDD로 개발하자!
+-mocha, should, superTest

@@ -3,7 +3,6 @@
 // const callback = (err, data) => {
 //     console.log(data);
 // }
-
 // const file = fs.readFile('test.txt', {
 //     encoding: 'utf8'
 // }, callback)
@@ -84,9 +83,10 @@
 const express = require('express');
 const logger = require('morgan');
 const app = express();
-const users = [{name: 'Alice'}] // todo
+const users = [{ name: 'Alice' }] // todo
 
-app.get('/', (req,res) => res.send('Hello World!'));
-app.get('/users', (req,res) => res.json(users));
+app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/users', (req, res) => res.json(users));
+
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
