@@ -159,4 +159,22 @@ package.json 파일의 scripts 부분에 "start": "node /index.js" 를 추가하
 -테스트 주도 개발
 
 -TDD로 개발하자!
+테스트 라이브러리
 -mocha, should, superTest
+
+Mocha 
+-모카는 테스트코드를 돌려주는 테스트 러너
+-테스트 꾸러미 : 테스트 환경으로 모카에서는 describe()으로 구현한다.
+-테스트 케이스 : 실제 테스트를 말하며 모카에서는 it()으로 구현한다.
+-git checkout -f mocha
+-설치는 npm i mocha 로 설치 가능 뒤에 --save-dev 옵션을 주면    개발환경에서 필요한 모듈로 구분 할 수 있다.
+
+Should
+-슈드(Should)는 검증(assertion) 라이브러리다.
+-가독성 높은 테스트 코드를 만들 수 있다.
+
+superTest (curl을 사용하지 않고 superTest를 사용한다.)
+-단위 테스트 : 함수의 기능 테스트
+-통합 테스트 : API의 기능 테스트
+-슈퍼 테스트는 익스프레스 통합 테스트용 라이브러리다.
+-내부적으로 익스프레스 서버를 구동시켜 실제 요청을 보낸 뒤 결과를 검증한다.

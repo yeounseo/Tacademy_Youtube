@@ -88,5 +88,6 @@ const users = [{ name: 'Alice' }] // todo
 app.get('/', (req, res) => res.send('Hello World!'));
 app.get('/users', (req, res) => res.json(users));
 
+// app.listen(3000, () => console.log('running'));
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+module.exports = app;
