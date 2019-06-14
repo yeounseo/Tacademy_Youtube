@@ -83,11 +83,22 @@
 const express = require('express');
 const logger = require('morgan');
 const app = express();
-const users = [{ name: 'Alice' }] // todo
+const users = [
+    { id:1, name: 'Alice' },
+    { id:2, name: 'Alice' },
+    { id:3, name: 'Alice' }
+]
 
 app.get('/', (req, res) => res.send('Hello World!'));
-app.get('/users', (req, res) => res.json(users));
+app.get('/users', (req, res) => {
+    req.query.limit = req.query.limit || 10
+    const limit = parseInt(req.query.limit, 10)
 
-// app.listen(3000, () => console.log('running'));
+    if(Number.isNaN(limit)) {
+        res.status(400).end()
+    } else {
+        res.json(users.slice(0, limit))
+    }
+});
 
 module.exports = app;
